@@ -95,6 +95,26 @@ public class App {
 
         //deveria mudar na forma como é retornado a função getHora
 
+        //Classe Produto
+
+        Produto a = new Produto();
+        Produto b = new Produto();
+
+        a.setNome("Geladeira");
+        a.setPreco(832);
+
+        b.setNome("micro-ondas");
+        b.setPreco(499);
+
+        a.setDesconto(6);
+        b.setDesconto(12);
+
+        int precoFinal1 = a.getPreco() - a.getPreco() * (a.getDesconto()/100);
+        int precoFinal2 = b.getPreco() - b.getPreco() * (b.getDesconto()/100);
+
+        System.out.println("Preço final do produto A: " + precoFinal1);
+        System.out.println("Preço final do produto B: " + precoFinal2);
+
 
 
 
