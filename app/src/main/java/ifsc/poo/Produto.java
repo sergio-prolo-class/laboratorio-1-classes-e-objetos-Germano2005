@@ -29,5 +29,10 @@ public class Produto {
         this.desconto = desconto;
     }
 
+    public String anuncio(){
+        int desconto = this.preco - this.desconto;
+        return this.nome + ": de R$" + this.preco + "por APENAS R$" + desconto;
+    }
+
 
 }

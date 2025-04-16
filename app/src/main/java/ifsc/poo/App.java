@@ -115,6 +115,25 @@ public class App {
         System.out.println("Preço final do produto A: " + precoFinal1);
         System.out.println("Preço final do produto B: " + precoFinal2);
 
+        System.out.println(a.anuncio());
+        System.out.println(b.anuncio());
+
+
+
+        // eu mudaria o nome do atributo de ao contrário de desconto ser taxa, e um método que cálcule a o desconto a partir da taxa e o preço atual
+
+        // Livro
+        Livro livro = new Livro();
+
+        livro.setTitulo("O Senhor dos Anéis - A Sociedade do Anel\n");
+        livro.setAutor("J. R. R. Tolkien\n");
+        livro.setGenero(" Fantasia, Aventura\n");
+        livro.setNumPaginas(464);
+        livro.setCapitulos(22);
+
+
+
+
 
 
 
