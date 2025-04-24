@@ -47,9 +47,4 @@ public class Livro {
         this.capitulos = capitulos;
     }
 
-    public String lerPaginas(){
-        switch (this.numPaginas){
-            case
-        }
-    }
 }

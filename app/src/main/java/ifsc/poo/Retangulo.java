@@ -1,22 +1,44 @@
 package ifsc.poo;
 
 public class Retangulo {
-    private float largura;
-    private float altura;
+    private int largura;
+    private int altura;
+    private static Retangulo maiorArea;
+    private static Retangulo menorPerimetro;
 
-    public float getLargura() {
-        return largura;
+    public Retangulo(int largura, int altura) {
+        this.largura = largura <= 0 ? 1 : largura;
+        this.altura = altura <= 0 ? 1 : altura;
+
+        atualizarMaiorArea(this);
+        atualizarMenorPerimetro(this);
     }
 
-    public void setLargura(float largura) {
-        this.largura = largura;
+    private static void atualizarMaiorArea(Retangulo r) {
+        if (maiorArea == null || r.calcularArea() > maiorArea.calcularArea()) {
+            maiorArea = r;
+        }
     }
 
-    public float getAltura() {
-        return altura;
+    private static void atualizarMenorPerimetro(Retangulo r) {
+        if (menorPerimetro == null || r.calcularPerimetro() < menorPerimetro.calcularPerimetro()) {
+            menorPerimetro = r;
+        }
     }
 
-    public void setAltura(float altura) {
-        this.altura = altura;
+    public int calcularArea() {
+        return largura * altura;
+    }
+
+    public int calcularPerimetro() {
+        return 2 * (largura + altura);
+    }
+
+    public static Retangulo getMaiorArea() {
+        return maiorArea;
+    }
+
+    public static Retangulo getMenorPerimetro() {
+        return menorPerimetro;
     }
 }

@@ -9,114 +9,71 @@ public class App {
 
     public static void main(String[] args) {
         //Lâmpada
+        System.out.println("\n Lâmpada");
         Lampada l1 = new Lampada();
-        Lampada l2 = new Lampada();
+        Lampada l2 = new Lampada(true);
 
-        l1.ligar(true);
-
-        l2.desligada(true);
-
-        System.out.println("Primeira lâmpada: " + l1.verEstado());
-        System.out.println("Segunda lâmpada: " + l2.verEstado());
+        System.out.println("Lâmpada 1 está " + (l1.isLigada() ? "ligada" : "desligada"));
+        System.out.println("Lâmpada 2 está " + (l2.isLigada() ? "ligada" : "desligada"));
+        System.out.println("Total de lâmpadas criadas: " + Lampada.getTotal());
 
         // Pessoa
-        Pessoa p1 = new Pessoa();
-        Pessoa p2 = new Pessoa();
-        int idadeAlice = 22, idadeBruno = 25;
+        System.out.println("\n Pessoa");
+        Pessoa p1 = new Pessoa("111.222.333-44");
+        Pessoa p2 = new Pessoa("", "Fulano da Silva");
+        Pessoa p3 = new Pessoa("555.666.777-88", "Ciclano de Algo", 30);
 
-        p1.setNome("Alice");
-        p1.setIdade(idadeAlice);
-        p2.setNome("Bruno");
-        p2.setIdade(idadeBruno);
+        System.out.println("Pessoa 1: CPF=" + p1.getCpf() + ", Nome=" + p1.getNome() + ", Idade=" + p1.getIdade());
+        System.out.println("Pessoa 2: CPF=" + p2.getCpf() + ", Nome=" + p2.getNome() + ", Idade=" + p2.getIdade());
+        System.out.println("Pessoa 3: CPF=" + p3.getCpf() + ", Nome=" + p3.getNome() + ", Idade=" + p3.getIdade());
 
-        p2.felizAniversario();
-        p2.felizAniversario();
-        p2.felizAniversario();
-
-        System.out.println("Idade Alice: " + p1.getIdade());
-        System.out.println("Idade Bruno: " + p2.getIdade());
-
-        p1.setIdade(-44);
-        //possível é, porém, não faz sentido ter uma idade negativa, nesses casos pode ser feito uma verificação
-
-        p2.setNome("");
-        //Consiguir eu consigo, porém também não faz sentido, novamente pode haver uma verificação nesses casos
 
         System.out.println("Idade Alice: " + p1.getIdade());
         System.out.println("Idade Bruno: " + p2.getNome());
 
         //Retangulo
-        Retangulo retangulo = new Retangulo();
-        //retangulo.setLargura(5);
-        //retangulo.setAltura(4);
+        System.out.println("\nRetângulo");
+        Retangulo r1 = new Retangulo(5, 10);
+        Retangulo r2 = new Retangulo(3, 8);
+        Retangulo r3 = new Retangulo(0, -5); // Deve ser ajustado para 1x1
 
-        float area = retangulo.getAltura() * retangulo.getLargura();
-        System.out.println(area);
+        System.out.println("Retângulo 1: Área=" + r1.calcularArea() + ", Perímetro=" + r1.calcularPerimetro());
+        System.out.println("Retângulo 2: Área=" + r2.calcularArea() + ", Perímetro=" + r2.calcularPerimetro());
+        System.out.println("Retângulo 3: Área=" + r3.calcularArea() + ", Perímetro=" + r3.calcularPerimetro());
 
-        float perimetro = retangulo.getAltura() + retangulo.getAltura() + retangulo.getLargura() + retangulo.getLargura();
-        System.out.println(perimetro);
-
-        Random numAleatorio = new Random();
-
-        List <Retangulo> retangulos = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++){
-            float altura = numAleatorio.nextFloat(100f);
-            float largura = numAleatorio.nextFloat(100f);
-            Retangulo r = new Retangulo();
-            r.setAltura(altura);
-            r.setLargura(largura);
-            retangulos.add(r);
-        }
-
-        for(Retangulo retangulo1 : retangulos){
-            float area1 = retangulo1.getAltura() * retangulo.getLargura();
-            System.out.println(area1);
-
-            float perimetro1 = retangulo1.getAltura() + retangulo.getAltura() + retangulo.getLargura() + retangulo.getLargura();
-            System.out.println(perimetro1);
-        }
+        Retangulo maior = Retangulo.getMaiorArea();
+        System.out.println("Maior área: " + maior.calcularArea());
+        Retangulo menorPerim = Retangulo.getMenorPerimetro();
+        System.out.println("Menor perímetro: " + menorPerim.calcularPerimetro());
 
         // Relógio
-        Relogio relogio = new Relogio();
+        System.out.println("\nRelógi");
+        Relogio rel1 = new Relogio(14, 30, 45);
+        Relogio rel2 = new Relogio(25, 70, 80); // Inválido, deve zerar
+        Relogio rel3 = new Relogio(8, 15);
 
-        relogio.ajustaHora((byte) 14, (byte) 58, (byte) 32);
-        System.out.println(relogio.toString());
-
-        relogio.avancaMinuto();
-        relogio.avancaMinuto();
-        System.out.println(relogio.toString());
-
-        relogio.ajustaHora((byte) 23, (byte) 59, (byte) 59);
-        System.out.println(relogio.toString());
-
-        relogio.avancaSegundo();
-        System.out.println(relogio.toString());
-
-        //deveria mudar na forma como é retornado a função getHora
+        System.out.println("Relógio 1: " + rel1.diferencaEmSegundos(rel3) + " segundos de diferença");
+        rel2.sincronizar(rel1);
+        System.out.println("Relógio 2 sincronizado com Relógio 1");
 
         //Classe Produto
 
-        Produto a = new Produto();
-        Produto b = new Produto();
+        System.out.println("\nProduto");
+        Produto produto1 = new Produto("Notebook", 3500.00);
+        Produto produto2 = new Produto("Mouse", 120.50);
+        Produto produto3 = new Produto("Teclado", 250.75);
 
-        a.setNome("Geladeira");
-        a.setPreco(832);
+        System.out.println("Produto 1: " + p1.getNome() + ", Código: " + produto1.getCodigo());
+        System.out.println("Produto 2: " + p2.getNome() + ", Código: " + produto2.getCodigo());
+        System.out.println("Produto 3: " + p3.getNome() + ", Código: " + produto3.getCodigo());
+        System.out.println("Total de produtos: " + Produto.getTotalProdutos());
 
-        b.setNome("micro-ondas");
-        b.setPreco(499);
-
-        a.setDesconto(6);
-        b.setDesconto(12);
-
-        int precoFinal1 = a.getPreco() - a.getPreco() * (a.getDesconto()/100);
-        int precoFinal2 = b.getPreco() - b.getPreco() * (b.getDesconto()/100);
-
-        System.out.println("Preço final do produto A: " + precoFinal1);
-        System.out.println("Preço final do produto B: " + precoFinal2);
-
-        System.out.println(a.anuncio());
-        System.out.println(b.anuncio());
+        // Teste do CSV (simplificado sem collections)
+        System.out.println("\nRegistro CSV:");
+        String[] csv = Produto.getRegistroCSV();
+        for (String linha : csv) {
+            System.out.println(linha);
+        }
 
 
 
@@ -130,11 +87,6 @@ public class App {
         livro.setGenero(" Fantasia, Aventura\n");
         livro.setNumPaginas(464);
         livro.setCapitulos(22);
-
-
-
-
-
 
 
     }
